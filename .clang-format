@@ -1,0 +1,26 @@
+---
+Language: Cpp
+BasedOnStyle: WebKit
+ColumnLimit: 200
+AlignAfterOpenBracket: AlwaysBreak
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+UseTab: Never
+BinPackArguments: false
+BinPackParameters: false
+BreakBeforeBraces: Allman
+NamespaceIndentation: None
+IndentWidth: 4
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: 'true'
+  AfterEnum: 'true'
+  AfterFunction: 'true'
+  AfterStruct: 'true'
+  AfterUnion: 'true'
+
+SortIncludes: false
+IncludeBlocks: Preserve
+
+PointerAlignment: Left
+AlignConsecutiveDeclarations: false

@@ -1,0 +1,7 @@
+lib3mf_sdk
+Lib
+Include
+Bin
+Bindings
+Examples/*/*.dll
+Examples/*/*.stl

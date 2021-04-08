@@ -1,0 +1,3 @@
+./third_party/*
+./plugin/3dsmax/read/ThreeMFImport.rc
+./plugin/3dsmax/write/ThreeMFExport.rc
