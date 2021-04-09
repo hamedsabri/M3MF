@@ -1,6 +1,6 @@
 include(FetchContent)
 
-set(FETCHCONTENT_QUIET OFF)
+set(FETCHCONTENT_QUIET ON)
 
 FetchContent_Declare(
     fmt

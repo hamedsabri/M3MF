@@ -92,7 +92,7 @@ add_subdirectory(write)
 # ---------------------------------------------------------------------------------
 # install M3MF.mod
 # ---------------------------------------------------------------------------------
-configure_file(${PROJECT_SOURCE_DIR}/M3MF.mod.template ${PROJECT_BINARY_DIR}/M3MF.mod)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/M3MF.mod.template ${PROJECT_BINARY_DIR}/M3MF.mod)
 install(FILES ${PROJECT_BINARY_DIR}/M3MF.mod
     DESTINATION ${CMAKE_INSTALL_PREFIX}/Maya
 )

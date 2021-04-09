@@ -327,10 +327,6 @@ def BuildAndInstall(context, buildArgs, stages):
         extraArgs = []
         stagesArgs = []
 
-        if context.maxVersion:
-            extraArgs.append('-DMAX_VERSION="{maxVersion}"'
-                             .format(maxVersion=context.maxVersion))
-
         if context.maxSdkLocation:
             extraArgs.append('-DMAXSDK_LOCATION="{maxSdkLocation}"'
                              .format(maxSdkLocation=context.maxSdkLocation))
@@ -394,9 +390,6 @@ parser.add_argument("--build-location", type=str,
 parser.add_argument("--install-location", type=str,
                     help=("Set Install directory "
                           "(default: <workspace_location>/install-location)"))
-
-parser.add_argument("--max-version", type=int, default=2021,
-                    help="3DSMax Version.")
 
 parser.add_argument("--maxsdk-location", type=str,
                     help="Directory where 3DSMax SDK is installed.")
@@ -470,9 +463,6 @@ class InstallContext:
         self.numJobs = args.jobs
         if self.numJobs <= 0:
             raise ValueError("Number of jobs must be greater than 0")
-
-        # 3DSMax Version
-        self.maxVersion = args.max_version
 
         # 3DSMax SDK Location
         self.maxSdkLocation = (os.path.abspath(args.maxsdk_location)
