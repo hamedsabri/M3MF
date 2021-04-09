@@ -15,7 +15,8 @@ option(BUILD_MAYA_PLUGIN "Build 3MF plugin for Autodesk Maya" ON)
 # ---------------------------------------------------------------------------------
 # version
 # ---------------------------------------------------------------------------------
-set(THREEMF_VERSION "1.0.0")
+include(M3MF_version.info)
+set(M3MF_VERSION "${M3MF_MAJOR_VERSION}.${M3MF_MINOR_VERSION}.${M3MF_PATCH_LEVEL}")
 
 # ---------------------------------------------------------------------------------
 # module

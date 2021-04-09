@@ -290,22 +290,22 @@ def RunMakeZipArchive(context):
     pkgDir = context.pkgDir
     variant = BuildVariant(context)
 
-    # extract version from MayaThreeMF_version.info
-    MayaThreeMFVerion = [] 
-    cmakeInfoDir = os.path.join(context.MayaThreeMFSrcDir, 'cmake')
-    filename = os.path.join(cmakeInfoDir, 'MayaThreeMF_version.info')
+    # extract version from M3MF_version.info
+    M3MFVerion = [] 
+    cmakeInfoDir = os.path.join(context.M3MFSrcDir)
+    filename = os.path.join(cmakeInfoDir, 'M3MF_version.info')
     with open(filename, 'r') as filehandle:
         content = filehandle.readlines()
         for current_line in content:
             digitList = re.findall(r'\d+', current_line)
             versionStr = ''.join(str(e) for e in digitList)
-            MayaThreeMFVerion.append(versionStr)
+            M3MFVerion.append(versionStr)
 
-    majorVersion = MayaThreeMFVerion[0]
-    minorVersion = MayaThreeMFVerion[1]
-    patchLevel   = MayaThreeMFVerion[2]  
+    majorVersion = M3MFVerion[0]
+    minorVersion = M3MFVerion[1]
+    patchLevel   = M3MFVerion[2]  
 
-    pkgName = 'MayaThreeMF' + '-' + majorVersion + '.' + minorVersion + '.' + patchLevel + '-' + (platform.system()) + '-' + variant
+    pkgName = 'M3MF' + '-' + majorVersion + '.' + minorVersion + '.' + patchLevel + '-' + (platform.system()) + '-' + variant
     with CurrentWorkingDirectory(buildDir):
         shutil.make_archive(pkgName, 'zip', installDir)
 
@@ -323,7 +323,7 @@ def RunMakeZipArchive(context):
                     sys.exit(1)
 
 def BuildAndInstall(context, buildArgs, stages):
-    with CurrentWorkingDirectory(context.MayaThreeMFSrcDir):
+    with CurrentWorkingDirectory(context.M3MFSrcDir):
         extraArgs = []
         stagesArgs = []
 
@@ -354,15 +354,15 @@ def BuildAndInstall(context, buildArgs, stages):
                            "or choose a different location to install to."
                            .format(dir=dir))
                 sys.exit(1)
-        Print("""Success MayaThreeMF build and install !!!!""")
+        Print("""Success M3MF build and install !!!!""")
 
 def RunTests(context,extraArgs):
     RunCTest(context,extraArgs)
-    Print("""Success running MayaThreeMF tests !!!!""")
+    Print("""Success running M3MF tests !!!!""")
 
 def Package(context):
     RunMakeZipArchive(context)
-    Print("""Success packaging MayaThreeMF !!!!""")
+    Print("""Success packaging M3MF !!!!""")
     Print('Archived package is available in {pkgDir}'.format(pkgDir=context.pkgDir))
 
 ############################################################
@@ -433,7 +433,7 @@ class InstallContext:
     def __init__(self, args):
 
         # Assume the project's top level cmake is in the current source directory
-        self.MayaThreeMFSrcDir = os.path.normpath(
+        self.M3MFSrcDir = os.path.normpath(
             os.path.join(os.path.abspath(os.path.dirname(__file__))))
 
         # Build type
@@ -506,7 +506,7 @@ if __name__ == "__main__":
     # Summarize
     summaryMsg = """
     Building with settings:
-      Source directory          {MayaThreeMFSrcDir}
+      Source directory          {M3MFSrcDir}
       Workspace directory       {workspaceDir}
       Build directory           {buildDir}
       Install directory         {instDir}
@@ -530,7 +530,7 @@ if __name__ == "__main__":
       CTest arguments           {ctestArgs}"""
 
     summaryMsg = summaryMsg.format(
-        MayaThreeMFSrcDir=context.MayaThreeMFSrcDir,
+        M3MFSrcDir=context.M3MFSrcDir,
         workspaceDir=context.workspaceDir,
         buildDir=context.buildDir,
         instDir=context.instDir,
